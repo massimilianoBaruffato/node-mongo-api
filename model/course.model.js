@@ -9,9 +9,9 @@ var CourseSchema = new mongoose.Schema({
         require : "Required"
     },
     courseId: {
-        type: "String"
+        type: String
     },
-    CourseDuration:{
+    courseDuration: {
         type: String
     },
     courseFee:{

@@ -18,15 +18,16 @@ router.post("/add",(req,res)=>{
     course.courseName=req.body.courseName;
     course.courseFees=req.body.courseFees;
     course.courseDuration=req.body.courseDuration;
-    course.Id= Math.ceil(Math.random()*10000000000);
+    course.courseId= Math.ceil(Math.random()*10000000000);
     course.save((err,doc)=>{
     if(!err){
         res.redirect("/course/list");
+        console.log("inserito");
     }
     else {
         res.send("Error occurred");
     }
-});
+    });
    
 })
 
@@ -34,12 +35,14 @@ router.post("/add",(req,res)=>{
 router.get("/list",(req, res)=>{
 
 
-
-
-    //response.send("Course Controller");
-    CourseModel.find({},(err,docs)=>{
+    /*var course=new CourseModel();
+    course.courseName="nodejs";
+    course.courseId="22";
+    course.save();*/
+ //response.send("Course Controller");
+    CourseModel.find((err,docs)=>{
         if(!err){
-            
+            console.log(docs);
             res.render("list",{data: docs});
         }
         else{
